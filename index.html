@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canım Arkadaşım ❤️</title>
+  <title>GÜZEL LER GÜZELİM ❤️</title>
   <style>
     body {
       margin: 0;
       overflow: hidden;
-      background: linear-gradient(to bottom, #f0f8ff, #add8e6, #87ceeb); /* Mavi tonları */
+      background: linear-gradient(to bottom, #fffafa, #ffe4e1, #ffc0cb); /* Pembe tonları */
       font-family: 'Segoe UI', sans-serif;
-      color: #004d40;
+      color: #880e4f;
       text-align: center;
       position: relative;
     }
@@ -18,21 +18,22 @@
     /* Yazıların kapsayıcısı */
     .message-container {
       position: absolute;
-      bottom: -100%;
+      bottom: -100%; /* Ekranın altından başlar */
       left: 50%;
       transform: translateX(-50%);
       animation: scrollUp 25s linear infinite;
-      white-space: nowrap;
+      white-space: nowrap; /* Yazıların tek satırda kalmasını sağlar */
+      padding-bottom: 50px; /* Alttan boşluk */
     }
 
     /* Mesaj satırları */
     .message {
-      font-size: 2.2em;
+      font-size: 2.3em;
       font-weight: bold;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-      line-height: 1.5em;
-      margin: 0.5em 0;
-      color: #00796b;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+      line-height: 1.6em;
+      margin: 0.7em 0;
+      color: #c2185b;
     }
 
     /* Yazı animasyonu */
@@ -43,31 +44,42 @@
       100% { bottom: 110%; opacity: 0; }
     }
 
-    /* Süzülen balonlar */
-    .bubble {
+    /* Süzülen kalpler */
+    .heart {
       position: absolute;
-      width: 30px;
-      height: 30px;
-      background-color: #4dd0e1;
-      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      background-color: #f06292; /* Orta pembe */
+      transform: rotate(45deg);
       animation: float 10s linear infinite;
-      opacity: 0.6;
-      z-index: -1;
+      opacity: 0.7;
+      z-index: -1; /* Yazıların arkasında kalır */
     }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background-color: #f06292;
+      border-radius: 50%;
+    }
+    .heart::before { top: -12.5px; left: 0; }
+    .heart::after { top: 0; left: -12.5px; }
 
     @keyframes float {
-      0% { transform: translateY(100vh); opacity: 0; }
+      0% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
       50% { opacity: 1; }
-      100% { transform: translateY(-10vh); opacity: 0; }
+      100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
     }
 
     /* Başlık */
     .title {
-      font-size: 3em;
+      font-size: 3.2em;
       font-weight: bold;
-      margin-top: 20px;
-      text-shadow: 3px 3px 10px rgba(0,0,0,0.2);
-      color: #004d40;
+      margin-top: 30px;
+      text-shadow: 3px 3px 10px rgba(0,0,0,0.25);
+      color: #d81b60;
       animation: fadeIn 2s forwards;
       position: relative;
       z-index: 1;
@@ -80,29 +92,37 @@
 </head>
 <body>
 
-  <div class="title">Canım Arkadaşım ☀️</div>
+  <div class="title">GÜZEL LER GÜZELİM ❤️</div>
 
   <div class="message-container">
-    <div class="message">Ne kadar özel olduğunu bil istedim...</div>
-    <div class="message">İyi ki varsın, iyi ki hayatımdasın!</div>
-    <div class="message">Her zaman yanımda olduğunu hissetmek,</div>
-    <div class="message">Bana güç veriyor...</div>
-    <div class="message">Seninle her şey daha güzel, daha eğlenceli.</div>
-    <div class="message">Gerçekten çok kıymetlisin ❤️</div>
+    <div class="message">Ne kadar özel bir insan olduğunu bilmeni isterim.</div>
+    <div class="message">Hayatımda senin gibi bir arkadaşa sahip olduğum için çok şanslıyım.</div>
+    <div class="message">Yanımda olduğun her an, dünyam daha parlak.</div>
+    <div class="message">Gülüşünle, desteğinle, varlığınla...</div>
+    <div class="message">Her zaman kalbimdesin, her zaman yanımdasın.</div>
+    <div class="message">Gerçekten çok ama çok kıymetlisin!</div>
+    <div class="message">İyi ki varsın canım arkadaşım!</div>
   </div>
 
   <audio autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
+    <source src="https://www.bensound.com/bensound-music/bensound-memories.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    const colors = ['#81d4fa', '#4fc3f7', '#29b6f6', '#03a9f4', '#0288d1'];
+    const colors = ['#ffcdd2', '#f8bbd0', '#f48fb1', '#f06292', '#e91e63'];
     for(let i=0; i<30; i++) {
-      const bubble = document.createElement('div');
-      bubble.className = 'bubble';
-      bubble.style.left = Math.random()*100 + 'vw';
-      bubble.style.animationDuration = (8 + Math.random()*5) + 's';
-      bubble.style.animationDelay = (Math.random()*2) + 's';
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random()*100 + 'vw';
+      heart.style.animationDuration = (8 + Math.random()*5) + 's';
+      heart.style.animationDelay = (Math.random()*2) + 's';
+      heart.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
       bubble.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
       document.body.appendChild(bubble);
     }
