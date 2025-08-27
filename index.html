@@ -8,14 +8,23 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: linear-gradient(to bottom, #fffafa, #ffe4e1, #ffc0cb);
       font-family: 'Segoe UI', sans-serif;
       color: #880e4f;
       text-align: center;
       position: relative;
+
+      /* Yumuşak geçişli hareketli arka plan */
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+      background-size: 400% 400%;
+      animation: gradientFlow 15s ease infinite;
     }
 
-    /* Başlık */
+    @keyframes gradientFlow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .title {
       font-size: 2.5em;
       font-weight: bold;
@@ -29,24 +38,21 @@
     }
     @keyframes fadeIn {
       from { opacity: 0; }
-      to { opacity: 1; }
+      to   { opacity: 1; }
     }
 
-    /* Yazıların kapsayıcısı */
     .message-container {
       position: absolute;
-      top: 100%;   /* Ekranın en altından başlasın */
+      top: 100%;
       left: 50%;
       transform: translateX(-50%);
       animation: scrollUp 25s linear infinite;
-      white-space: normal;
       width: 90%;
       max-width: 600px;
       padding-bottom: 50px;
       box-sizing: border-box;
     }
 
-    /* Mesaj satırları */
     .message {
       font-size: 1.8em;
       font-weight: bold;
@@ -57,7 +63,6 @@
       word-wrap: break-word;
     }
 
-    /* Animasyon - alttan üste */
     @keyframes scrollUp {
       0%   { top: 100%; opacity: 0; }
       10%  { opacity: 1; }
@@ -65,7 +70,6 @@
       100% { top: -120%; opacity: 0; }
     }
 
-    /* Kalpler */
     .heart {
       position: absolute;
       width: 25px;
@@ -94,7 +98,6 @@
       100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
     }
 
-    /* Mobil uyum */
     @media (max-width: 768px) {
       .message { font-size: 1.5em; }
       .title   { font-size: 2em; }
