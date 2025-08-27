@@ -8,56 +8,73 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: linear-gradient(to bottom, #fffafa, #ffe4e1, #ffc0cb); /* Pembe tonları */
+      background: linear-gradient(to bottom, #fffafa, #ffe4e1, #ffc0cb);
       font-family: 'Segoe UI', sans-serif;
       color: #880e4f;
       text-align: center;
       position: relative;
     }
 
+    /* Başlık */
+    .title {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-top: 30px;
+      text-shadow: 3px 3px 10px rgba(0,0,0,0.25);
+      color: #d81b60;
+      animation: fadeIn 2s forwards;
+      position: relative;
+      z-index: 1;
+      padding: 0 10px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     /* Yazıların kapsayıcısı */
     .message-container {
       position: absolute;
-      bottom: -100%; /* Ekranın altından başlar */
+      top: 100%;   /* Ekranın en altından başlasın */
       left: 50%;
       transform: translateX(-50%);
       animation: scrollUp 25s linear infinite;
-      white-space: normal; /* Yazıların yeni satıra geçmesine izin verir */
-      width: 90%; /* Mobil görünümde daha iyi sığması için */
-      max-width: 600px; /* Çok geniş ekranlarda da ortalanmış kalır */
-      box-sizing: border-box; /* Padding'i genişliğe dahil eder */
-      padding-bottom: 50px; /* Alttan boşluk */
+      white-space: normal;
+      width: 90%;
+      max-width: 600px;
+      padding-bottom: 50px;
+      box-sizing: border-box;
     }
 
     /* Mesaj satırları */
     .message {
-      font-size: 1.8em; /* Mobil için biraz küçültüldü */
+      font-size: 1.8em;
       font-weight: bold;
       text-shadow: 2px 2px 8px rgba(0,0,0,0.15);
-      line-height: 1.5em; /* Satır aralığı */
-      margin: 0.7em auto; /* Dikeyde boşluk, yatayda ortalama */
+      line-height: 1.5em;
+      margin: 0.7em auto;
       color: #c2185b;
-      word-wrap: break-word; /* Uzun kelimelerin kırılmasını sağlar */
+      word-wrap: break-word;
     }
 
-    /* Yazı animasyonu */
+    /* Animasyon - alttan üste */
     @keyframes scrollUp {
-      0% { bottom: -100%; opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { bottom: 110%; opacity: 0; }
+      0%   { top: 100%; opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { top: -120%; opacity: 0; }
     }
 
-    /* Süzülen kalpler */
+    /* Kalpler */
     .heart {
       position: absolute;
       width: 25px;
       height: 25px;
-      background-color: #f06292; /* Orta pembe */
+      background-color: #f06292;
       transform: rotate(45deg);
       animation: float 10s linear infinite;
       opacity: 0.7;
-      z-index: -1; /* Yazıların arkasında kalır */
+      z-index: -1;
     }
     .heart::before,
     .heart::after {
@@ -69,39 +86,18 @@
       border-radius: 50%;
     }
     .heart::before { top: -12.5px; left: 0; }
-    .heart::after { top: 0; left: -12.5px; }
+    .heart::after  { top: 0; left: -12.5px; }
 
     @keyframes float {
-      0% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
-      50% { opacity: 1; }
+      0%   { transform: translateY(100vh) rotate(45deg); opacity: 0; }
+      50%  { opacity: 1; }
       100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
     }
 
-    /* Başlık */
-    .title {
-      font-size: 2.5em; /* Mobil için ayarlandı */
-      font-weight: bold;
-      margin-top: 30px;
-      text-shadow: 3px 3px 10px rgba(0,0,0,0.25);
-      color: #d81b60;
-      animation: fadeIn 2s forwards;
-      position: relative;
-      z-index: 1;
-      padding: 0 10px; /* Kenarlardan boşluk */
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Mobil uyumluluk için medya sorgusu */
+    /* Mobil uyum */
     @media (max-width: 768px) {
-      .message {
-        font-size: 1.5em; /* Daha küçük telefonlar için yazı boyutu */
-      }
-      .title {
-        font-size: 2em; /* Daha küçük telefonlar için başlık boyutu */
-      }
+      .message { font-size: 1.5em; }
+      .title   { font-size: 2em; }
     }
   </style>
 </head>
@@ -118,10 +114,6 @@
     <div class="message">Gerçekten çok ama çok kıymetlisin!</div>
     <div class="message">İyi ki varsın canım arkadaşım!</div>
   </div>
-
-  <audio autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-memories.mp3" type="audio/mpeg">
-  </audio>
 
   <script>
     const colors = ['#ffcdd2', '#f8bbd0', '#f48fb1', '#f06292', '#e91e63'];
